@@ -1,0 +1,16 @@
+.test-area{
+    height: 400px;
+    border: 1px dashed #000;
+}
+.center{
+    position: relative;
+    top: 50%;
+    text-align: center;
+    margin-top: -40px;
+}
+#example{
+    color : red ;
+}
+.opacity{
+    opacity: 0.5;
+}
