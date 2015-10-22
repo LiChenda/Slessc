@@ -6,6 +6,7 @@
 
 class Token
 {
+public:
 	enum Type
 	{
 		IDENTIIFER,
@@ -23,16 +24,16 @@ class Token
 		BRACE_OPEN,   // '{'
 		BRACE_CLOSED, // '}'
 		COMMENT,
-		DOTTOKEN      // '.'
+		DOTTOKEN,      // '.'
+        EOS,           // 'end of source file'
 	};
-public:
+
 	Token();
 	~Token();
 	Type getType();
 
 private:
 	Type m_type;
-public:
 	std::string str;
 
 };

@@ -9,8 +9,12 @@ class Tokenizer
 {
 public:
     Tokenizer ();
-    Tokenizer (istream &in);
+    Tokenizer (std::istream&in);
     virtual ~Tokenizer ();
+
+    Token::Type readNextToken();
+
+    Token &getToken();
 
 private:
     /* data */
