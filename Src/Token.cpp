@@ -8,7 +8,7 @@ Token::~Token()
 {
 }
 
-Token::type Token::getType()
+Token::Type Token::getType()
 {
 	return this->m_type;
 }

@@ -3,5 +3,5 @@
 int	main() 
 {
 	std::cout << "s" << std::endl;
-	return;
+	return 0;
 }

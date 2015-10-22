@@ -6,7 +6,7 @@
 
 class Token
 {
-	enum type
+	enum Type
 	{
 		IDENTIIFER,
 		ATKEYWORD,
@@ -28,10 +28,10 @@ class Token
 public:
 	Token();
 	~Token();
-	type getType();
+	Type getType();
 
 private:
-	type m_type;
+	Type m_type;
 public:
 	std::string str;
 
