@@ -29,3 +29,6 @@
 
 # Vim swap files
 *.swp
+# LiChenda's FakeTokenizer
+Tokenizer_fake.cpp
+Tokenizer_fake.h

@@ -8,6 +8,12 @@ Token::~Token()
 {
 }
 
+Token::Token(Type type, std::string str)
+{
+	this->m_type = type;
+	this->str = str;
+}
+
 Token::Type Token::getType()
 {
 	return this->m_type;

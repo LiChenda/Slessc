@@ -20,7 +20,7 @@ public:
 		COLON,        // ':'
 		DELIMITER,    // ';'
 		BRACKET_OPEN, // '['
-		BRACKET_CLOSE,// ']'
+		BRACKET_CLOSED,// ']'
 		PAREN_OPEN,   // '('
 		PAREN_CLOSED, // ')'
 		BRACE_OPEN,   // '{'
@@ -32,6 +32,7 @@ public:
 
 	Token();
 	~Token();
+	Token(Type type, std::string str);
 	Type getType();
 
 	const std::string& getLexem();
