@@ -6,9 +6,6 @@
 
 class Token
 {
-public:
-	Token();
-	~Token();
 	enum type
 	{
 		IDENTIIFER,
@@ -28,6 +25,13 @@ public:
 		COMMENT,
 		DOTTOKEN      // '.'
 	};
+public:
+	Token();
+	~Token();
+	type getType();
+
+private:
+	type m_type;
 public:
 	std::string str;
 
