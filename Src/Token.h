@@ -34,6 +34,9 @@ public:
 	~Token();
 	Type getType();
 
+	const std::string& getLexem();
+	void setLexem(std::string str);
+	
 private:
 	Type m_type;
 	std::string str;
