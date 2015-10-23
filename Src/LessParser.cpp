@@ -54,6 +54,7 @@ void LessParser::createValueTables()
 		case Token::ATKEYWORD:
 			if ((it+1)->getType() == Token::COLON)
 			{
+				valuetablestack.top().erase(it->getLexeme());
 				valuetablestack.top().insert(pair<string, Token>(it->getLexeme(), *(it + 2)));
 			}
 			else if ((it + 1)->getType() == Token::DELIMITER)

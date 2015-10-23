@@ -16,7 +16,7 @@ public:
 		STRING,
 		NUMBER,       //  number
 		COLORVAR,     //  color type var
-		HASH,         // '#'  
+		HASH,         // '#{IDENTIFIER}'
 		PERCENTAGE,   // '%'
 		COLON,        // ':'
 		DELIMITER,    // ';'
@@ -27,8 +27,11 @@ public:
 		BRACE_OPEN,   // '{'
 		BRACE_CLOSED, // '}'
 		COMMENT,
-		DOTTOKEN,      // '.'
+        WHITESPACES,
+        LINE_COMMENT,
+		DOTTOKEN,      // '.{IDENTIFIER}'
         EOS,           // 'end of source file'
+        OTHER,
 		ADD,
 		SUB,
 		MUL,
@@ -36,17 +39,17 @@ public:
 	};
 
 	Token();
+    Token(const std::string &, Type);
 	~Token();
-	Token(Type type, std::string str);
-	Type getType();
 
-	const std::string& getLexeme();
-	void setLexem(std::string str);
-	
+    std::string &getLexeme() { return lexeme; }
+	Type getType() { return m_type; }
+    void setType(Type type) { m_type = type; }
+    void clear() { lexeme.clear(); m_type = OTHER; }
+
 private:
 	Type m_type;
-	std::string str;
-
+	std::string lexeme;
 };
 
 #endif
