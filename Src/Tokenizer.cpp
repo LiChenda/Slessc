@@ -11,7 +11,7 @@ Tokenizer::~Tokenizer()
 }
 void Tokenizer::readChar()
 {
-    // Read a char into this.last_char
+    // Read a char into this->last_char
 
     if (in == NULL) {
         return ;
@@ -26,7 +26,7 @@ void Tokenizer::readChar()
 }
 Token::Type Tokenizer::readNextToken()
 {
-    // Let tokenizer read next token to `last_char`
+    // Let tokenizer read next token to `current_token`
 
     if (in == NULL) {
         current_token.setType(Token::EOS);
@@ -65,7 +65,7 @@ Token::Type Tokenizer::readNextToken()
             } else if (readIdent()) {
                 current_token.setType(Token::IDENTIIFER);
             } else {
-                current_token.setType(Token::OTHER);
+                current_token.setType(Token::SUB);
             }
             break;
         case '/':
@@ -75,7 +75,7 @@ Token::Type Tokenizer::readNextToken()
                 // Set comment type in readComment()
                 //current_token.setType(Token::COMMENT);               
             } else {
-                current_token.setType(Token::OTHER);
+                current_token.setType(Token::DIV);
             }
             break;
         case ';':
@@ -124,7 +124,19 @@ Token::Type Tokenizer::readNextToken()
             if (readNum(false)) {
                 current_token.setType(Token::NUMBER);
                 readNumSuffix();
+            } else if (readIdent()) {
+                current_token.setType(Token::DOTTOKEN);
             }
+            break;
+        case '*':
+            current_token.setType(Token::MUL);
+            lexeme.push_back(last_char);
+            readChar();
+            break;
+        case '+':
+            current_token.setType(Token::ADD);
+            lexeme.push_back(last_char);
+            readChar();
             break;
         default:
             if (readString()) {

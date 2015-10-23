@@ -16,7 +16,7 @@ public:
 		STRING,
 		NUMBER,       //  number
 		COLORVAR,     //  color type var
-		HASH,         // '#'  
+		HASH,         // '#{IDENTIFIER}'
 		PERCENTAGE,   // '%'
 		COLON,        // ':'
 		DELIMITER,    // ';'
@@ -29,7 +29,7 @@ public:
 		COMMENT,
         WHITESPACES,
         LINE_COMMENT,
-		DOTTOKEN,      // '.'
+		DOTTOKEN,      // '.{IDENTIFIER}'
         EOS,           // 'end of source file'
         OTHER,
 		ADD,
