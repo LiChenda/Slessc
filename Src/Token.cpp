@@ -19,7 +19,7 @@ Token::Type Token::getType()
 	return this->m_type;
 }
 
-const std::string & Token::getLexem()
+const std::string & Token::getLexeme()
 {
 	return this->str;
 }

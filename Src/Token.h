@@ -40,7 +40,7 @@ public:
 	Token(Type type, std::string str);
 	Type getType();
 
-	const std::string& getLexem();
+	const std::string& getLexeme();
 	void setLexem(std::string str);
 	
 private:

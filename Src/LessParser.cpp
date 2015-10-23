@@ -29,11 +29,12 @@ LessParser::~LessParser()
 
 void LessParser::showTokens()
 {
+	createValueTables();
 	for (vector<Token>::iterator it = tokenstream.begin(); it != tokenstream.end(); it++)
 	{
-		cout << it->getLexem() << endl;
+		cout <<it->getLexeme() << endl;
 	}
-	createValueTables();
+	
 }
 
 void LessParser::parse()
@@ -43,19 +44,21 @@ void LessParser::parse()
 
 void LessParser::createValueTables()
 {
-	stack<vector<Token>::iterator> akwdtrplc;
+	stack<vector<vector<Token>::iterator>> vartoreplacestack;
+	vartoreplacestack.push(vector<vector<Token>::iterator>());
 	for (vector<Token>::iterator it = tokenstream.begin(); it != tokenstream.end(); it++)
 	{
+		stack<std::map<std::string, Token>> temp;
 		switch (it->getType())
 		{
 		case Token::ATKEYWORD:
 			if ((it+1)->getType() == Token::COLON)
 			{
-				valuetablestack.top().insert(pair<string, Token>(it->getLexem(), *(it + 2)));
+				valuetablestack.top().insert(pair<string, Token>(it->getLexeme(), *(it + 2)));
 			}
 			else if ((it + 1)->getType() == Token::DELIMITER)
 			{
-				akwdtrplc.push(it);
+				vartoreplacestack.top().push_back(it);
 			}
 
 			break;
@@ -65,11 +68,38 @@ void LessParser::createValueTables()
 			break;
 		case Token::BRACE_OPEN:
 			this->valuetablestack.push(map<string, Token>());
+			vartoreplacestack.push(vector<vector<Token>::iterator>());
 			break;
 		case Token::BRACE_CLOSED:
+			//valuetablestack.pop();
+			temp = stack<std::map<std::string, Token>>(this->valuetablestack);
+			for (vector<vector<Token>::iterator>::iterator
+				itr = vartoreplacestack.top().begin(); itr != vartoreplacestack.top().end(); itr++)
+			{
+				string atkey =  (*itr)->getLexeme();
+				std::map<std::string, Token>::iterator findkey;
+				
+				while (true)
+				{
+					findkey = temp.top().find(atkey);
+					if (findkey == temp.top().end())
+					{
+						temp.pop();
+					}
+					else
+					{
+						break;
+					}
+					
 
+				}
+			
 
-			//this->valuetablestack.pop();
+				**itr = findkey->second;
+				
+			}
+			vartoreplacestack.pop();
+			this->valuetablestack.pop();
 			break;
 		default:
 			break;
