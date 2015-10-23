@@ -2,10 +2,11 @@
 #define __TOKENIZER_H__
 
 #include <iostream>
-#include "Tokenizer.h"
 #include "Token.h"
 
-class Tokenizer
+#include "Tokenizer_fake.h"
+
+class Tokenizer : public FakenizerForTest
 {
 public:
     Tokenizer ();

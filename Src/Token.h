@@ -15,6 +15,7 @@ public:
 		ATKEYWORD,
 		STRING,
 		NUMBER,       //  number
+		COLORVAR,     //  color type var
 		HASH,         // '#'  
 		PERCENTAGE,   // '%'
 		COLON,        // ':'
@@ -31,6 +32,10 @@ public:
 		DOTTOKEN,      // '.'
         EOS,           // 'end of source file'
         OTHER,
+		ADD,
+		SUB,
+		MUL,
+		DIV,
 	};
 
 	Token();
@@ -40,7 +45,7 @@ public:
 	Type getType() { return m_type; }
     void setType(Type type) { m_type = type; }
     void clear() { lexeme.clear(); m_type = OTHER; }
-
+	
 private:
 	Type m_type;
 	std::string lexeme;
