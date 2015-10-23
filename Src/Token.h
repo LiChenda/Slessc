@@ -15,6 +15,7 @@ public:
 		ATKEYWORD,
 		STRING,
 		NUMBER,       //  number
+		COLORVAR,     //  color type var
 		HASH,         // '#'  
 		PERCENTAGE,   // '%'
 		COLON,        // ':'
@@ -28,6 +29,10 @@ public:
 		COMMENT,
 		DOTTOKEN,      // '.'
         EOS,           // 'end of source file'
+		ADD,
+		SUB,
+		MUL,
+		DIV,
 	};
 
 	Token();
