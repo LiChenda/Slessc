@@ -4,9 +4,7 @@
 #include <iostream>
 #include "Token.h"
 
-#include "Tokenizer_fake.h"
-
-class Tokenizer : public FakenizerForTest
+class Tokenizer
 {
 public:
     Tokenizer ();
