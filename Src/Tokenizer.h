@@ -18,7 +18,25 @@ public:
     Token &getToken();
 
 private:
-    /* data */
+    std::istream *in;
+    Token current_token;
+    char last_char;
+
+    void readChar();
+
+    bool readIdent();
+    bool readName();
+    bool readNMChar();
+    bool readNMStart();
+    bool readNum(bool readDecimals);
+    bool readNumSuffix();
+    bool readComment();
+    bool readString();
+    bool readWhitespace();
+    bool lastReadEq(char c);
+    bool lastReadInRange(char c1, char c2);
+    bool lastReadIsHex();
+    bool lastReadIsDigit();
 };
 
 #endif
