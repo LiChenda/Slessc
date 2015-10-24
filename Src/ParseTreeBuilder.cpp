@@ -18,22 +18,5 @@ ParseTreeBuilder::~ParseTreeBuilder()
 
 void ParseTreeBuilder::buildParseTree()
 {
-	for (vector<Token>::iterator itr = m_tokenstream.begin(); itr != m_tokenstream.begin(); itr++)
-	{
-		switch (itr->getType())
-		{
-		case Token::HASH:
-		case Token::DOTTOKEN:
-			break;
-
-		case Token::ATKEYWORD:
-			break;
-
-		case Token::IDENTIIFER:
-			break;
-
-		default:
-			break;
-		}
-	}
+	
 }

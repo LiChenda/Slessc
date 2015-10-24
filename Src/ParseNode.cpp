@@ -5,13 +5,18 @@ using namespace std;
 
 ParseNode::ParseNode(Token t)
 {
-	ParseNode();
+	this->m_childs = vector<ParseNode*>();
+	this->m_parent = nullptr;
+	this->m_type = UNDEFINE;
 	this->m_token = t;
 }
 
 ParseNode::ParseNode(Token t, ParseNode::NodeType nt)
 {
-	ParseNode(t);
+	this->m_childs = vector<ParseNode*>();
+	this->m_parent = nullptr;
+	this->m_type = UNDEFINE;
+	this->m_token = t;
 	this->setNodeType(nt);
 }
 
