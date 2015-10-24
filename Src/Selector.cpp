@@ -4,6 +4,10 @@ Selector::Selector(std::string head) : m_head(head)
 {
 }
 
+Selector::Selector()
+{
+}
+
 Selector::~Selector()
 {
 }
@@ -13,7 +17,7 @@ void Selector::addToken(Token t)
 	this->selector_stream.push_back(t);
 }
 
-std::vector<std::map<std::string, Token>&>& Selector::getValueTables()
+std::vector<std::map<std::string, Token>*>& Selector::getValueTables()
 {
 	return valuetables;
 }
@@ -29,6 +33,7 @@ std::string Selector::writeYourself()
     while (readAttribute()) {}
     
     // Produce a string from `attributes`.
+    // TODO
 }
 
 bool Selector::readAttribute() {
@@ -44,4 +49,9 @@ bool Selector::readAttribute() {
 }
 
 std::string Selector::readExpression() {
+    return "";
+}
+std::string Selector::getHeadName()
+{
+	return this->m_head;
 }
