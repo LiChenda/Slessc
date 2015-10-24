@@ -1,6 +1,5 @@
 #include "Selector.h"
 
-
 Selector::Selector(std::string head) : m_head(head)
 {
 }
@@ -9,13 +8,40 @@ Selector::~Selector()
 {
 }
 
-
 void Selector::addToken(Token t)
 {
-	this->selectorStream.push_back(t);
+	this->selector_stream.push_back(t);
 }
 
 std::vector<std::map<std::string, Token>&>& Selector::getValueTables()
 {
 	return valuetables;
+}
+
+std::string Selector::writeYourself()
+{
+    if (selector_stream.size() == 0) {
+        // No attribute.
+        return "";
+    }
+
+    // Read every token from `selector_stream`.
+    while (readAttribute()) {}
+    
+    // Produce a string from `attributes`.
+}
+
+bool Selector::readAttribute() {
+    Token first_token = selector_stream[pos];
+    if (selector_stream[pos].getType() == Token::IDENTIIFER &&
+        selector_stream[pos+1].getType() == Token::COLON) {
+        
+        pos += 2;
+        attributes[first_token.getLexeme()] = readExpression();
+        return true;
+    }
+    return false;
+}
+
+std::string Selector::readExpression() {
 }

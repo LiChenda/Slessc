@@ -3,8 +3,9 @@
 #define __SELECTOR_H_
 
 #include <vector>
-#include "Token.h"
 #include <map>
+
+#include "Token.h"
 
 class Selector
 {
@@ -13,20 +14,19 @@ public:
 	~Selector();
 	
 
-	std::string writeYouself(); //return processed string 
-	void addToken(Token t); //add tokens to selector streams;
-	std::vector<std::map<std::string, Token>&>& Selector::getValueTables();
-
-
+	std::string writeYourself(); //return processed string
+	void addToken(Token t); //add `t` to selector streams;
+	std::vector<std::map<std::string, Token>&>& getValueTables();
 
 private:
-	std::vector<Token> selectorStream;
-	std::vector<std::map<std::string, Token>&> valuetables; //
+	std::vector<Token> selector_stream;
+	std::vector<std::map<std::string, Token>&> valuetables;
 	
 	std::string m_head;
+    size_t pos = 0;
 	std::map<std::string, std::string> attributes;
+
+    bool readAttribute();
+    std::string readExpression();
 };
-
-
-
 #endif
