@@ -22,6 +22,7 @@ private:
 private:
 	void parse();
 	void createValueTables();
+
 };
 
 
