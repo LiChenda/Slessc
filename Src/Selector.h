@@ -10,14 +10,14 @@ class Selector
 {
 public:
 	Selector(std::string head);
+	Selector();
 	~Selector();
 	
 
 	std::string writeYouself(); //return processed string 
 	void addToken(Token t); //add tokens to selector streams;
 	std::vector<std::map<std::string, Token>&>& Selector::getValueTables();
-
-
+	std::string getHeadName();
 
 private:
 	std::vector<Token> selectorStream;
