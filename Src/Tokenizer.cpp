@@ -272,7 +272,7 @@ bool Tokenizer::readNumSuffix()
 bool Tokenizer::readString()
 {
     string &lexeme = current_token.getLexeme();
-    if (!lastReadEq('"' && !lastReadEq('\''))) {
+    if (!lastReadEq('"') && !lastReadEq('\'')) {
         return false;
     }
     char delim = last_char;
