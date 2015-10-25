@@ -50,6 +50,9 @@ std::string Selector::writeYourself()
     for (auto attribute : attributes) {
 		output.append(attribute.first + ": " + attribute.second + ";\n");
     }
+    for (auto comment : comments) {
+        output.append(comment);
+    }
     output.append("}");
     return output;
 }
@@ -64,6 +67,11 @@ bool Selector::readAttribute() {
         
         pos += 2;
         attributes[first_token.getLexeme()] = readExpression();
+        return true;
+    } else if (selector_stream[pos].getType() == Token::COMMENT){
+        pos ++;
+        comments.push_back(selector_stream[pos].getLexeme());
+        //output.append(selector_stream[pos].getLexeme());
         return true;
     }
     return false;
