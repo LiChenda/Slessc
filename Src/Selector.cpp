@@ -48,7 +48,7 @@ std::string Selector::writeYourself()
     output.append(m_head);
     output.append(" {\n");
     for (auto attribute : attributes) {
-        output.append(attribute.first + ": " + attribute.second + ";\n");
+        output.append(attribute.first + ": " + attribute.second + "\n");
     }
     output.append("}");
     return output;
