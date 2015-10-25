@@ -68,9 +68,9 @@ bool Selector::readAttribute() {
         pos += 2;
         attributes[first_token.getLexeme()] = readExpression();
         return true;
-    } else if (selector_stream[pos].getType() == Token::COMMENT){
-        pos ++;
+    } else if (pos < selector_stream.size() && selector_stream[pos].getType() == Token::COMMENT){
         comments.push_back(selector_stream[pos].getLexeme());
+		pos++;
         //output.append(selector_stream[pos].getLexeme());
         return true;
     }
