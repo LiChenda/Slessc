@@ -2,12 +2,12 @@
 #include <fstream>
 //#include "LessParser.h"
 #include "Parser.h"
-int	main() 
+int	main(int argc, char **argv) 
 {
 	std::ifstream fs;
-	fs.open("test1.less", std::ios::in);
-	//Tokenizer(fs);
-	Parser lesparser = Parser(Tokenizer(fs));
+	fs.open(argv[1], std::ios::in);
+	Tokenizer tokenizer = Tokenizer(fs);
+	Parser lesparser = Parser(tokenizer);
 	lesparser.printTree(lesparser.getRootNode());
 	//lesparser.showTokens();
 	return 0;
