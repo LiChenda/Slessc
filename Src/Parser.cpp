@@ -19,6 +19,20 @@ Parser::~Parser()
 {
 }
 
+void Parser::printTree(SelectorNode * rootnode)
+{
+	for (auto child : rootnode->getChilds()) 
+	{
+		cout << child->getSelectContent() << endl;
+		printTree(child);
+	}
+}
+
+SelectorNode * Parser::getRootNode()
+{
+	return this->rootnode;
+}
+
 void Parser::generateSelector(vector<Token> currntstream)
 {
 	for (vector<Token>::iterator itr = currntstream.begin(); itr != currntstream.end(); itr++)

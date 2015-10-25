@@ -12,7 +12,8 @@ class Parser
 public:
 	Parser(Tokenizer& tokenizer);
 	~Parser();
-
+	void printTree(SelectorNode* rootnode);
+	SelectorNode* getRootNode();
 private:
 	std::vector<Token> tokenstream;
 	
@@ -20,6 +21,8 @@ private:
 	SelectorNode* rootnode;
 
 };
+
+
 
 
 #endif

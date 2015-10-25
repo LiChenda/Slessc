@@ -55,6 +55,9 @@ std::string Selector::writeYourself()
 }
 
 bool Selector::readAttribute() {
+	if (pos >= selector_stream.size()) {
+		return false;
+	}
     Token first_token = selector_stream[pos];
     if (selector_stream[pos].getType() == Token::IDENTIIFER &&
         selector_stream[pos+1].getType() == Token::COLON) {
@@ -68,7 +71,7 @@ bool Selector::readAttribute() {
 
 std::string Selector::readExpression() {
     std::string expr = "";
-    for (; selector_stream[pos].getType() != Token::COLON; pos++) {
+    for (; pos < selector_stream.size() && selector_stream[pos].getType() != Token::COLON; pos++) {
         if (selector_stream[pos].getType() == Token::ATKEYWORD) {
             expr.append(getVar(selector_stream[pos].getLexeme()));
         } else {
@@ -82,7 +85,8 @@ std::string Selector::readExpression() {
 
 std::string Selector::getVar(std::string var_name) {
     std::vector<std::map<std::string, Token> *>::iterator current_map = valuetables.end() - 1;
-    for (; current_map != valuetables.begin()-1; current_map--) {
+	//valuetables.begin() - 1;
+    for (; current_map >= valuetables.begin(); current_map--) {
         std::map<std::string, Token>::iterator token_itr = (*current_map)->find(var_name);
         if (token_itr != (*current_map)->end()) {
             return token_itr->second.getLexeme();

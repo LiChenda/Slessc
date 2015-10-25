@@ -14,7 +14,8 @@ public:
 		std::vector<std::map<std::string, Token>*> valuetables);
 	SelectorNode();
 	~SelectorNode();
-	
+	std::vector<SelectorNode*>& getChilds();
+	std::string getSelectContent();
 private:
 	std::vector<Token> m_currentstream;
 	Selector m_localselector;

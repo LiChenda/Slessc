@@ -114,3 +114,13 @@ SelectorNode::SelectorNode()
 SelectorNode::~SelectorNode()
 {
 }
+
+std::vector<SelectorNode*>& SelectorNode::getChilds()
+{
+	return this->m_childs;
+}
+
+std::string SelectorNode::getSelectContent()
+{
+	return this->m_localselector.writeYourself();
+}
