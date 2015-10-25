@@ -1,3 +1,9 @@
+/************************************************************************/
+/* this class wraps Selector class 
+*  for selector tree building work
+*/
+/************************************************************************/
+
 #pragma once
 #ifndef __SELECTORNODE_H_
 #define __SELECTORNODE_H_

@@ -6,11 +6,14 @@ using namespace std;
 Parser::Parser(Tokenizer& tokenizer)
 {
 	list<Token> tokenlist = list<Token>();
+	//save tokens form tokenizer
 	while (tokenizer.readNextToken() != Token::EOS)
 	{
 		tokenlist.push_back(tokenizer.getToken());
 	}
 	this->tokenstream = vector<Token>(tokenlist.begin(), tokenlist.end());
+	
+	//build selector tree by construct method of SelectorNode class
 	vector<map<string, Token>*> valuetables = vector<map<string, Token>*>();
 	this->rootnode = new SelectorNode(tokenstream, "", valuetables);
 }
