@@ -5,7 +5,8 @@
 int	main(int argc, char **argv) 
 {
 	std::ifstream fs;
-	fs.open(argv[1], std::ios::in);
+	//fs.open(argv[1], std::ios::in);
+	fs.open("test1.less", std::ios::in);
 	Tokenizer tokenizer = Tokenizer(fs);
 	Parser lesparser = Parser(tokenizer);
 	lesparser.printTree(lesparser.getRootNode());

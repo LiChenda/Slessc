@@ -48,7 +48,7 @@ std::string Selector::writeYourself()
     output.append(m_head);
     output.append(" {\n");
     for (auto attribute : attributes) {
-        output.append(attribute.first + ": " + attribute.second + "\n");
+		output.append(attribute.first + ": " + attribute.second + ";\n");
     }
     output.append("}");
     return output;
@@ -71,7 +71,7 @@ bool Selector::readAttribute() {
 
 std::string Selector::readExpression() {
     std::string expr = "";
-    for (; pos < selector_stream.size() && selector_stream[pos].getType() != Token::COLON; pos++) {
+	for (; pos < selector_stream.size() && selector_stream[pos].getType() != Token::DELIMITER; pos++) {
         if (selector_stream[pos].getType() == Token::ATKEYWORD) {
             expr.append(getVar(selector_stream[pos].getLexeme()));
         } else {

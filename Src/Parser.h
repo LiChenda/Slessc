@@ -12,12 +12,13 @@ class Parser
 public:
 	Parser(Tokenizer& tokenizer);
 	~Parser();
+
+	//out put css file by traversing the selector tree
 	void printTree(SelectorNode* rootnode);
 	SelectorNode* getRootNode();
 private:
 	std::vector<Token> tokenstream;
-	
-	void generateSelector(std::vector<Token> currntstream);
+	//
 	SelectorNode* rootnode;
 
 };
