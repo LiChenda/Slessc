@@ -6,12 +6,17 @@ using namespace std;
 Parser::Parser(Tokenizer& tokenizer)
 {
 	list<Token> tokenlist = list<Token>();
-	while (tokenizer->readNextToken() != Token::EOS)
+	while (tokenizer.readNextToken() != Token::EOS)
 	{
-		tokenlist.push_back(tokenizer->getToken());
+		tokenlist.push_back(tokenizer.getToken());
 	}
 	this->tokenstream = vector<Token>(tokenlist.begin(), tokenlist.end());
+	vector<map<string, Token>*> valuetables = vector<map<string, Token>*>();
+	this->rootnode = new SelectorNode(tokenstream, "", valuetables);
+}
 
+Parser::~Parser()
+{
 }
 
 void Parser::generateSelector(vector<Token> currntstream)
@@ -24,7 +29,7 @@ void Parser::generateSelector(vector<Token> currntstream)
 			break;
 		case Token::HASH:
 		case Token::DOTTOKEN:
-			if ((itr+1)->getType == Token::BRACE_OPEN)
+			if ((itr+1)->getType() == Token::BRACE_OPEN)
 			{
 			}
 			break;

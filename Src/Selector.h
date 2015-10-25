@@ -17,9 +17,11 @@ public:
 
 	std::string writeYourself(); //return processed string 
 	void addToken(Token t); //add tokens to selector streams;
+	void setTokenStream(std::vector<Token> tstream);  //set selector's token stream
 	std::vector<std::map<std::string, Token>*>& getValueTables();
 	std::string getHeadName();
 
+	
 private:
 	std::vector<Token> selector_stream;
 	std::vector<std::map<std::string, Token>*> valuetables;

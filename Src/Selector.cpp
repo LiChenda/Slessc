@@ -17,6 +17,11 @@ void Selector::addToken(Token t)
 	this->selector_stream.push_back(t);
 }
 
+void Selector::setTokenStream(std::vector<Token> tstream)
+{
+	this->selector_stream = std::vector<Token>(tstream);
+}
+
 std::vector<std::map<std::string, Token>*>& Selector::getValueTables()
 {
 	return valuetables;

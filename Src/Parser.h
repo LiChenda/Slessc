@@ -5,6 +5,7 @@
 #include "Token.h"
 #include "Selector.h"
 #include "Tokenizer.h"
+#include "SelectorNode.h"
 
 class Parser
 {
@@ -16,6 +17,7 @@ private:
 	std::vector<Token> tokenstream;
 	
 	void generateSelector(std::vector<Token> currntstream);
+	SelectorNode* rootnode;
 
 };
 
