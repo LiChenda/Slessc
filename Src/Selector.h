@@ -32,5 +32,13 @@ private:
 
     bool readAttribute();
     std::string readExpression();
+
+    std::string getVar(std::string);
+
+    std::string expr();
+    std::string rest_expr();
+    std::string term();
+    std::string rest_term();
+    std::string factor();
 };
 #endif
