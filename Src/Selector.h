@@ -29,6 +29,7 @@ private:
 	std::string m_head;
     size_t pos = 0;
 	std::map<std::string, std::string> attributes;
+    std::vector<std::string> comments;
 
     bool readAttribute();
     std::string readExpression();
