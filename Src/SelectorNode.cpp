@@ -1,8 +1,8 @@
 #include "SelectorNode.h"
 using namespace std;
 SelectorNode::SelectorNode(vector<Token> currentstream, 
-	string selectorname,
-	vector<map<string, Token>*> valuetables)
+						   string selectorname,
+						   vector<map<string, Token>*> valuetables)
 {
 	this->m_localselector = Selector(selectorname);
 	this->m_currentstream = currentstream;
@@ -24,6 +24,8 @@ SelectorNode::SelectorNode(vector<Token> currentstream,
 	vector<Token> substream = vector<Token>();
 	vector<Token> toprocess = vector<Token>();
 	this->valuetables.push_back(new map<string, Token>());
+
+	//
 	for (vector<Token>::iterator itr = currentstream.begin(); itr != currentstream.end(); itr++)
 	{
 		bool isselecthead = false;
@@ -45,11 +47,9 @@ SelectorNode::SelectorNode(vector<Token> currentstream,
 		case Token::COLON:
 			if (crrstate == ONVALUATION)
 			{
-				//pair<string, Token> toinsert = pair<string, Token>((itr-1)->getLexeme(), *(itr+1));
+				//add key-value to the top of maps stack;
 				map<string, Token>* topmap = this->valuetables.at(this->valuetables.size() - 1);
 				(*topmap)[(itr - 1)->getLexeme()] = *(itr + 1);
-				//(*(this->valuetables.end()))->insert(toinsert);
-				//(**(valuetables.end()))[(itr - 1)->getLexeme()] = *(itr + 1);
 			}
 			break;
 		case Token::DOTTOKEN:

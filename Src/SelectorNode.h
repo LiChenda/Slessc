@@ -9,11 +9,15 @@
 class SelectorNode
 {
 public:
+
+
+	//create SelectorNode tree recursively in construct function
 	SelectorNode(std::vector<Token> currentstream, 
 				std::string selectorname,
 		std::vector<std::map<std::string, Token>*> valuetables);
 	SelectorNode();
 	~SelectorNode();
+
 	std::vector<SelectorNode*>& getChilds();
 	std::string getSelectContent();
 private:
